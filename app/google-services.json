@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "492368901513",
+    "project_id": "app-delivery-c1d03",
+    "storage_bucket": "app-delivery-c1d03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492368901513:android:22f670858b125d5d945d58",
+        "android_client_info": {
+          "package_name": "com.icontinental.appdelivery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvG93dP2fubMX5HikmNz9eqHVcpcqgYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
