@@ -12,6 +12,8 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -32,6 +34,8 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var buttonCarrito: AppCompatButton
 
+    lateinit var buttonPedidos: AppCompatButton
+
     lateinit var linearlayoutUbicacion: LinearLayoutCompat
 
     lateinit var textViewSaludo: TextView
@@ -40,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var db: FirebaseFirestore
 
-//    private lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
 
     lateinit var sharedPreference: SharedPreferences
 
@@ -54,11 +58,11 @@ class HomeActivity : AppCompatActivity() {
 
         var contextPrueba = this
 
-        sharedPreference = getSharedPreferences("USER_PREFERENCES", Context.MODE_PRIVATE)
+        sharedPreference = getSharedPreferences("USER_DATA_PREFERENCES", Context.MODE_PRIVATE)
 
         db = Firebase.firestore
 
-//        auth = Firebase.auth
+        auth = Firebase.auth
 
 //        obtenerUsuario()
 
@@ -78,6 +82,8 @@ class HomeActivity : AppCompatActivity() {
 
         buttonCarrito = findViewById(R.id.buttonCarrito)
 
+        buttonPedidos = findViewById(R.id.buttonPedidos)
+
 //        linearlayoutUbicacion = findViewById(R.id.linearlayoutUbicacion)
 
 //        buttonAgregarNuevoProducto.setOnClickListener {
@@ -85,14 +91,20 @@ class HomeActivity : AppCompatActivity() {
 //        }
 
         buttonCerrarSesion.setOnClickListener {
-//            auth.signOut()
+            auth.signOut()
             finish()
         }
 
         buttonCarrito.setOnClickListener {
-//            val intent = Intent(this, CarritoActivity::class.java)
+            val intent = Intent(this, CarritoActivity::class.java)
 
-//            startActivity(intent)
+            startActivity(intent)
+        }
+
+        buttonPedidos.setOnClickListener {
+            val intent = Intent(this, PedidosActivity::class.java)
+
+            startActivity(intent)
         }
 
 //        linearlayoutUbicacion.setOnClickListener {
@@ -130,15 +142,15 @@ class HomeActivity : AppCompatActivity() {
                 val producto = productos[position]
                 Log.d("PRODUCTO SELECCIONADO", "producto nombre${productos[position].nombre}")
 
-//                val intent = Intent(contextPrueba, DetalleProducto::class.java)
+                val intent = Intent(contextPrueba, DetalleProducto::class.java)
 
-//                intent.putExtra("nombre", producto.nombre ?: "")
-//                intent.putExtra("categoria", producto.categoria ?: "")
-//                intent.putExtra("imagen", producto.imagen ?: "")
-//                intent.putExtra("precioDescuento", producto.precioDescuento ?: 0.0)
-//                intent.putExtra("precioRegular", producto.precioRegular ?: 0.0)
-//
-//                startActivity(intent)
+                intent.putExtra("nombre", producto.nombre ?: "")
+                intent.putExtra("categoria", producto.categoria ?: "")
+                intent.putExtra("imagen", producto.imagen ?: "")
+                intent.putExtra("precioDescuento", producto.precioDescuento ?: 0.0)
+                intent.putExtra("precioRegular", producto.precioRegular ?: 0.0)
+
+                startActivity(intent)
             }
         })
 
@@ -150,6 +162,8 @@ class HomeActivity : AppCompatActivity() {
 
         recyclerViewProductos.layoutManager = linearLayoutManagerProductos
         recyclerViewProductos.adapter = adapterProductos
+
+        obtenerDatosUsuario()
     }
 
 //    fun obtenerUsuario() {
@@ -184,6 +198,32 @@ class HomeActivity : AppCompatActivity() {
 //        editor.putString("direccion",usuario?.direccion ?: "")
 //        editor.apply()
 //    }
+
+    fun obtenerDatosUsuario() {
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user!!.uid
+        val docRef = db.collection("usuarios").document(uid)
+        docRef.get().addOnSuccessListener { document ->
+            if (document != null) {
+                Log.d("DOCUMENTO", "DocumentSnapshot data: ${document.data}")
+                val nombre = document.getString("nombres")
+                val direccion = document.getString("direccion")
+                val apellido = document.getString("apellidos")
+
+                val editor = sharedPreference.edit()
+                editor.putString("nombre", nombre)
+                editor.putString("direccion", direccion)
+                editor.putString("apellido", apellido)
+
+                editor.apply()
+
+            } else {
+                Log.d("NO DOCUMENTO", "No such document")
+            }
+        }.addOnFailureListener { exception ->
+            Log.d("ERROR", "get failed with ", exception)
+        }
+    }
 
     fun obtenerProductos() {
 

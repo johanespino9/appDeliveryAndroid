@@ -64,38 +64,122 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+<!--        <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="end">-->
+
+
+
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/buttonCarrito"-->
+<!--                android:layout_width="54dp"-->
+<!--                android:layout_height="54dp"-->
+<!--                android:padding="8dp"-->
+<!--                android:layout_margin="16dp"-->
+<!--                android:tint="@color/red"-->
+<!--                android:background="@drawable/carrito_compras"/>-->
+
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/buttonCerrarSesion"-->
+<!--                android:layout_width="56dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:padding="8dp"-->
+<!--                android:layout_margin="16dp"-->
+<!--                android:tint="@color/red"-->
+<!--                android:background="@drawable/cerrar_sesion"/>-->
+
+<!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center_vertical">-->
+
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/buttonCarrito"-->
+<!--                android:layout_width="54dp"-->
+<!--                android:layout_height="54dp"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:layout_marginBottom="16dp"-->
+<!--                android:background="@drawable/carrito_compras"-->
+<!--                android:padding="8dp"-->
+<!--                android:tint="@color/red" />-->
+
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/buttonPedidos"-->
+<!--                android:layout_width="54dp"-->
+<!--                android:layout_height="54dp"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:layout_marginBottom="16dp"-->
+<!--                android:background="@drawable/pedidos"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:padding="8dp"-->
+<!--                android:tint="@color/red" />-->
+
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/buttonCerrarSesion"-->
+<!--                android:layout_width="56dp"-->
+<!--                android:layout_height="56dp"-->
+<!--                android:padding="8dp"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:tint="@color/red"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:background="@drawable/cerrar_sesion"/>-->
+
+<!--        </RelativeLayout>-->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end">
+            android:gravity="center_vertical">
 
-
-
+            <!-- Botón Carrito (Izquierda) -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonCarrito"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/carrito_compras"
                 android:padding="8dp"
-                android:layout_margin="16dp"
-                android:text="Carrito"
-                android:fontFamily="@font/poppins_extrabold"
-                android:textSize="10sp"
-                android:textColor="@color/white"
-                android:background="@drawable/layout_background_rounded_red"/>
+                android:tint="@color/red" />
 
+            <!-- Botón Pedidos (Centro) -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonPedidos"
+                android:layout_width="56dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/pedidos"
+                android:padding="8dp"
+                android:tint="@color/red" />
+
+            <!-- Botón Cerrar Sesión (Derecha) -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonCerrarSesion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="56dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/cerrar_sesion"
                 android:padding="8dp"
-                android:layout_margin="16dp"
-                android:text="Cerrar sesión"
-                android:fontFamily="@font/poppins_extrabold"
-                android:textSize="10sp"
-                android:textColor="@color/white"
-                android:background="@drawable/layout_background_rounded_red"/>
+                android:tint="@color/red" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </RelativeLayout>
 
 
         <androidx.appcompat.widget.LinearLayoutCompat
